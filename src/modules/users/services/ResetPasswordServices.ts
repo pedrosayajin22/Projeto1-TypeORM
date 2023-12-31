@@ -16,13 +16,21 @@ class ResetPassword {
     const userTokenRepository = getCustomRepository(UserTokenRepository);
 
     const userToken =await userTokenRepository.FindByToken(token)
+    console.log(userToken);
+
     if(!userToken){
+      console.log("Erro no userToken");
+
       throw new AppError("UserToken does not exists")
     }
 
-    const user = await userRepository.FindByID(userToken.id)
+    const user = await userRepository.FindByID(userToken.user_id)
+    console.log(user);
+
 
     if(!user){
+      console.log("Erro no user ");
+
       throw new AppError("User does not exists")
     }
 
@@ -30,12 +38,14 @@ class ResetPassword {
     const compareDate = addHours(tokenCreatedAt,2)
 
     if(isAfter(Date.now(),compareDate)){
+      console.log("Erro no date");
+
       throw new AppError("Token invalid.")
     }
 
     user.password=await hash(password,8)
 
-    return;
+    await userRepository.save(user);
   }
 }
 export default ResetPassword;
