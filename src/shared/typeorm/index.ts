@@ -1,4 +1,8 @@
 import { createConnection } from 'typeorm';
 
-createConnection();
+async function initializeDatabase() {
+  await createConnection(); // Crie uma nova conexão
+}
+
+initializeDatabase();
 
