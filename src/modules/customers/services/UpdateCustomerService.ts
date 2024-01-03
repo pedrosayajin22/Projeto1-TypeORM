@@ -37,7 +37,7 @@ class UpdateCustomerService {
 
     await customerRepository.save(customer)
 
-    return customer;
+    return customer; 
 
   }
 }
