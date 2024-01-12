@@ -29,8 +29,11 @@
     "@typescript-eslint/parser": "^6.13.2",
     "bcrypt": "^5.1.1",
     "celebrate": "^15.0.3",
+    "class-transformer": "^0.5.1",
     "cors": "^2.8.5",
     "date-fns": "^3.0.6",
+    "dotenv": "^16.3.1",
+    "es6-shim": "^0.35.8",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
@@ -44,6 +47,7 @@
     "prettier": "^3.1.0",
     "reflect-metadata": "^0.1.14",
     "tsconfig-paths": "^4.2.0",
-    "typeorm": "^0.2.45"
+    "typeorm": "^0.2.45",
+    "typeorm-pagination": "^2.0.3"
   }
 }

@@ -31,7 +31,12 @@ export class CreateSessionsServices{
       throw new AppError('Incorred Email/Password combination',401);
     }
 
-    const token = await sign({},authConfig.jwt.secret,{
+    if (!process.env.APP_SECRET) {
+      console.error('A variável de ambiente JWT_SECRET não está definida.');
+      process.exit(1); // Saia do aplicativo ou tome a ação apropriada
+    }
+
+    const token = await sign({},process.env.APP_SECRET,{
       subject:user.id,
       expiresIn:authConfig.jwt.expiresIn
     })
