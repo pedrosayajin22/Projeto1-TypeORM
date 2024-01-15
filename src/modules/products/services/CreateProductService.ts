@@ -1,7 +1,8 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
-import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
-import Product from '../typeorm/entities/Product';
+import { ProductRepository } from '../infra/typeorm/repositories/ProductsRepository';
+import Product from '../infra/typeorm/entities/Product';
+import RedisCache from '@shared/cache/RedisCache';
 
 interface IRequest {
   name: string;
@@ -13,6 +14,7 @@ class CreateProductService {
   public async execute({ name, price, quantity }: IRequest): Promise<Product> {
     const productsRepository = getCustomRepository(ProductRepository);
     const productExists = await productsRepository.FindByName(name);
+    const redisCache = new RedisCache();
 
     if (productExists) {
       throw new AppError('There is already one product with this name');
@@ -24,6 +26,7 @@ class CreateProductService {
       quantity,
     });
 
+    await redisCache.invalidate('api-vendas-PRODUCT_LIST')
     await productsRepository.save(product);
 
     return product;

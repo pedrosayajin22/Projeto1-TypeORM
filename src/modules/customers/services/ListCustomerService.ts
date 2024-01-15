@@ -1,7 +1,6 @@
 import { createQueryBuilder, getCustomRepository } from 'typeorm';
-import { CustomerRepository } from '../typeorm/repositories/CustomersRepository';
-import Customer from '../typeorm/entities/Customer';
-
+import Customer from '../infra/typeorm/entities/Customer';
+import { CustomerRepository } from '../infra/typeorm/repositories/CustomersRepository';
 
 interface IPaginateCustomer {
 from:number,

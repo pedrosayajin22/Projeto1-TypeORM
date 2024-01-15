@@ -1,7 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
-import Order from '../typeorm/entities/Order';
-import OrderRepository from '../typeorm/repositories/OrderRepository';
+import Order from '../infra/typeorm/entities/Order';
+import OrderRepository from '../infra/typeorm/repositories/OrderRepository';
 
 
 
