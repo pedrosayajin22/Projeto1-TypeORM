@@ -1,8 +1,10 @@
-import OrdersProducts from "@modules/orders/infra/typeorm/entities/OrdersProducts";
+
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { IProduct } from "@modules/products/domain/models/IProduct";
+import OrdersProducts from "@modules/orders/infra/typeorm/entities/OrdersProducts";
 
 @Entity("products")
-class Product {
+class Product implements IProduct {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 

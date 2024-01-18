@@ -52,6 +52,7 @@
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.14",
     "tsconfig-paths": "^4.2.0",
+    "tsyringe": "^4.8.0",
     "typeorm": "^0.2.45",
     "typeorm-pagination": "^2.0.3"
   }

@@ -7,6 +7,7 @@ import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import {errors} from "celebrate"
 import "../typeorm"
+import "@shared/container"
 import 'express-async-errors';
 import uploadConfig from '@config/upload';
 import { pagination } from 'typeorm-pagination';
